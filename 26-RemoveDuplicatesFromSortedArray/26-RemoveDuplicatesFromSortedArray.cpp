@@ -1,0 +1,16 @@
+// Last updated: 7/28/2026, 9:59:13 PM
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int left=0;
+        int right=0;
+        while(right<nums.size()){
+            if(nums[left]==nums[right]) right++;
+            else {
+                left++;
+                nums[left]=nums[right];
+            }
+        }
+        return left+1;
+    }
+};
