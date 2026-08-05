@@ -1,19 +1,21 @@
-// Last updated: 8/5/2026, 1:44:25 PM
+// Last updated: 8/5/2026, 2:01:40 PM
 1class Solution {
 2public:
-3    int numSubarraysWithSum(vector<int>& nums, int goal) {
-4        unordered_map<int,int>map;  //key freq
-5        vector<int>prefix(nums.size()+1,0);
-6        int ans=0;
-7        for(int i=1;i<prefix.size();i++){
-8          prefix[i]=nums[i-1]+prefix[i-1];
-9        }
-10        
-11        for(int i=0;i<prefix.size();i++){
-12            if(map.find(prefix[i]-goal)!=map.end()) ans=ans+map[prefix[i]-goal];
-13
-14            map[prefix[i]]++;
-15        }
-16        return ans;
-17    }
-18};
+3    int numSubarrayProductLessThanK(vector<int>& nums, int k) {
+4        int i=0;
+5        int j=0;
+6        if(k<=1) return 0;
+7        long long mult=1;
+8        int ans=0;
+9        while(j<nums.size()){
+10            mult=mult*nums[j];
+11           while (mult>=k){
+12             mult=mult/nums[i];
+13             i++;
+14           }
+15          if(i<nums.size())  ans+=j-i+1;
+16           j++;
+17        }
+18        return ans;
+19    }
+20};
