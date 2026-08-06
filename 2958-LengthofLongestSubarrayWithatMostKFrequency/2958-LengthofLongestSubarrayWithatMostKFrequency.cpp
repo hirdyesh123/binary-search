@@ -1,27 +1,20 @@
-// Last updated: 8/6/2026, 10:55:52 AM
+// Last updated: 8/6/2026, 11:55:57 AM
 1class Solution {
 2public:
-3    long long countSubarrays(vector<int>& nums, int k) {
-4        int maxval=INT_MIN;
-5        for(int i=0;i<nums.size();i++){
-6            maxval=max(maxval,nums[i]);
-7        }
-8        int maxcount=0;
-9        int i=0;
-10        int j=0;
-11        long long  ans=0;
-12        while(j<nums.size()){
-13            if(nums[j]==maxval) maxcount++;
-14
-15            while( maxcount>=k){
-16                ans=ans+nums.size()-j;
-17                if(nums[i]==maxval) maxcount--;
-18                i++;
-19            }
-20
-21
-22            j++;
-23        }
-24        return ans;
-25    }
-26};
+3    int equalSubstring(string s, string t, int maxcost) {
+4        int i=0;  //use for traversing in t;
+5        int j=0;  //use for traversing in t;
+6        int currcost=0;
+7        int ans=0;
+8        while(j<t.size()){
+9            currcost+=abs(s[j]-t[j]);
+10            while(currcost>maxcost){
+11                currcost-=abs(s[i]-t[i]);
+12                i++;
+13            }
+14            ans=max(ans,j-i+1);
+15            j++;
+16        }
+17        return ans;
+18    }
+19};
