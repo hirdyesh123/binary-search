@@ -1,22 +1,22 @@
-// Last updated: 7/28/2026, 9:56:43 PM
-class Solution {
-public:
-    vector<int> dailyTemperatures(vector<int>& nums) {
-        vector<int>ans(nums.size());
-        vector<int>ngi(nums.size());
-        stack<int>st;
-        ngi[nums.size()-1]=-1;
-        st.push(nums.size()-1);
-        for(int i=nums.size()-2;i>=0;i--){
-            while(!st.empty() && nums[st.top()]<=nums[i]) st.pop();
-            if(st.empty()) ngi[i]=-1;
-            else ngi[i]=st.top();
-            st.push(i);
-        }       //1 2 6 5 5 6 -1 -1 
-       for(int i=0;i<nums.size();i++){
-         if(ngi[i]==-1) ans[i]=0;
-         else  ans[i]=ngi[i]-i;
-       }
-      return ans;
-    }
-};
+// Last updated: 8/21/2026, 11:26:44 PM
+1class Solution {
+2public:
+3    vector<int> dailyTemperatures(vector<int>& nums) {
+4        vector<int>ans(nums.size());
+5        vector<int>ngi(nums.size());
+6        stack<int>st;
+7        ngi[nums.size()-1]=-1;
+8        st.push(nums.size()-1);
+9        for(int i=nums.size()-2;i>=0;i--){
+10            while(!st.empty() && nums[st.top()]<=nums[i]) st.pop();
+11            if(st.empty()) ngi[i]=-1;
+12            else ngi[i]=st.top();
+13            st.push(i);
+14        }       //1 2 6 5 5 6 -1 -1 
+15       for(int i=0;i<nums.size();i++){
+16         if(ngi[i]==-1) ans[i]=0;
+17         else  ans[i]=ngi[i]-i;
+18       }
+19      return ans;
+20    }
+21};
