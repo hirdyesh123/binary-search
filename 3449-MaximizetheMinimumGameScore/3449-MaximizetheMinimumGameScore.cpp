@@ -1,4 +1,4 @@
-// Last updated: 9/1/2026, 10:33:56 PM
+// Last updated: 9/1/2026, 10:37:26 PM
 1class Solution {
 2public:
 3    bool possible(vector<int>&nums,int mid,int mo){
@@ -13,9 +13,9 @@
 12    int minimumSize(vector<int>& nums, int maxOperations) {
 13        int low=1;
 14        int high=*max_element(nums.begin(),nums.end());
-15        while(low<=high){
+15        while(low<high){
 16          int mid=low+(high-low)/2;
-17          if(possible(nums,mid,maxOperations)) high=mid-1;
+17          if(possible(nums,mid,maxOperations)) high=mid;
 18          else low=mid+1;
 19        }   
 20        return low;
