@@ -1,4 +1,4 @@
-// Last updated: 9/20/2026, 10:27:01 PM
+// Last updated: 9/20/2026, 10:31:58 PM
 1/**
 2 * Definition for singly-linked list.
 3 * struct ListNode {
@@ -36,7 +36,7 @@
 35            return x;
 36        }
 37        if(low>high) return NULL;
-38        int mid=low+(high-low)/2;
+38        int mid=(low+high)/2;
 39        TreeNode* temp=new TreeNode(nums[mid]);
 40        temp->left=tanvika(low,mid-1);
 41        temp->right=tanvika(mid+1,high);
