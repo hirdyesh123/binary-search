@@ -1,29 +1,32 @@
-// Last updated: 7/28/2026, 9:57:18 PM
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
-class Solution {
-public:
-    ListNode* oddEvenList(ListNode* head) {
-        if(head==NULL || head->next==NULL) return head;
-        ListNode* odd= head;
-        ListNode* even=head->next;
-       
-        ListNode* dummye=head->next;
-        while(even!=NULL  && even->next!=NULL){
-         odd->next=even->next;
-         odd=odd->next;
-        even->next=odd->next;
-         even=even->next;
-        }
-       odd->next=dummye;
-       return head;
-    }
-};
+// Last updated: 9/20/2026, 9:55:12 PM
+1/**
+2 * Definition for singly-linked list.
+3 * struct ListNode {
+4 *     int val;
+5 *     ListNode *next;
+6 *     ListNode() : val(0), next(nullptr) {}
+7 *     ListNode(int x) : val(x), next(nullptr) {}
+8 *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+9 * };
+10 */
+11class Solution {
+12public:
+13    vector<int> v;
+14
+15    Solution(ListNode* head) {
+16        while (head != NULL) {
+17            v.push_back(head->val);
+18            head = head->next;
+19        }
+20    }
+21
+22    int getRandom() {
+23        return v[rand() % v.size()];
+24    }
+25};
+26
+27/**
+28 * Your Solution object will be instantiated and called as such:
+29 * Solution* obj = new Solution(head);
+30 * int param_1 = obj->getRandom();
+31 */
